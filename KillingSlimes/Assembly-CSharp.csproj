@@ -56,13 +56,26 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Enemy Galore 1 - Pixel Art\Script\EnemySelector.cs" />
+    <Compile Include="Assets\Textures\Enemy Galore 1 - Pixel Art\Script\EnemySelector.cs" />
     <Compile Include="Assets\Scripts\BulletControl.cs" />
+    <Compile Include="Assets\Scripts\SlimeControl.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
-    <Compile Include="Assets\Enemy Galore 1 - Pixel Art\Script\EnemyTest.cs" />
+    <Compile Include="Assets\Textures\Enemy Galore 1 - Pixel Art\Script\EnemyTest.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MINIFANTASY Dungeon - Super Low Res 2D Pixel Art by Krishna Palacio\Scripts\DUN_StaggerAnimation.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MINIFANTASY Dungeon - Super Low Res 2D Pixel Art by Krishna Palacio\Scripts\DUN_AnimatedCharacterSelection.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MINIFANTASY Dungeon - Super Low Res 2D Pixel Art by Krishna Palacio\Scripts\Prop Variants\DUN_Table.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MINIFANTASY Dungeon - Super Low Res 2D Pixel Art by Krishna Palacio\Scripts\Prop Variants\DUN_Banner.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MinifantasyCommon\Scripts\AnimatedObjectsGroup.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MinifantasyCommon\Scripts\CameraController.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MINIFANTASY Dungeon - Super Low Res 2D Pixel Art by Krishna Palacio\Scripts\Prop Variants\DUN_Statue.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MINIFANTASY Dungeon - Super Low Res 2D Pixel Art by Krishna Palacio\Scripts\Prop Variants\DUN_Chair.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MINIFANTASY Dungeon - Super Low Res 2D Pixel Art by Krishna Palacio\Scripts\Prop Variants\DUN_LootSack.cs" />
+    <Compile Include="Assets\KrishnaPalacio\MinifantasyCommon\Scripts\SetAnimatorParameter.cs" />
+    <Compile Include="Assets\Scripts\MapManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Enemy Galore 1 - Pixel Art\Read Me.txt" />
+    <None Include="Assets\KrishnaPalacio\MINIFANTASY Dungeon - Super Low Res 2D Pixel Art by Krishna Palacio\DUN Documentation.txt" />
+    <None Include="Assets\Textures\Enemy Galore 1 - Pixel Art\Read Me.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

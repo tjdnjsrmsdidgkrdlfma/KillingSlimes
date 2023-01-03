@@ -6,6 +6,8 @@ public class BulletControl : MonoBehaviour
 {
     public float speed;
 
+    int damage = 1;
+
     Transform tr;
     Rigidbody2D rb;
 
@@ -34,7 +36,16 @@ public class BulletControl : MonoBehaviour
 
     void Move()
     {
-        Vector2 temp = tr.position + tr.right * speed;
+        Vector2 temp = rb.position + (Vector2)tr.right * speed;
         rb.MovePosition(temp);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Slime"))
+        {
+            other.GetComponent<SlimeControl>().Hp -= damage;
+            Destroy(gameObject);
+        } 
     }
 }
