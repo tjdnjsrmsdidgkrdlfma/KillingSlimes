@@ -1,29 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-    //18 x 10
-    public GameObject[] tiles;
+    public GameObject[] floor_tiles;
+    public GameObject[] wall_tiles;
+    public GameObject[] grass_tiles;
 
-    int row = 18;
-    int column = 10;
+    Vector2 up_left_floor_tiles = new Vector2(-6.75f, 4.75f);
+    Vector2 down_right_floor_tiles = new Vector2(8.75f, -4.75f);
+    Vector2 up_left_wall_tiles = new Vector2(-7.25f, 4.75f);
+    Vector2 down_right_wall_tiles = new Vector2(-7.25f, -4.75f);
+    Vector2 up_left_grass_tiles = new Vector2(-8.75f, 4.75f);
+    Vector2 down_right_grass_tiles = new Vector2(-7.75f, -4.75f);
 
-    void SetUp()
+    void Start()
     {
-        GameObject tile_map = new GameObject("TileMap");
+        StartMapManager();
+    }
 
-        for (int x = row / 2 * -1; x <= row / 2; x++)
+    public void StartMapManager()
+    {
+        CreateTiles(floor_tiles, up_left_floor_tiles, down_right_floor_tiles, "FloorTiles", true);
+        CreateTiles(wall_tiles, up_left_wall_tiles, down_right_wall_tiles, "WallTiles", false);
+        CreateTiles(grass_tiles, up_left_grass_tiles, down_right_grass_tiles, "FloorTiles", false);
+    }
+
+    void CreateTiles(GameObject[] tile_list, Vector2 up_left, Vector2 down_right, string parent_object_name, bool rotate)
+    {
+        GameObject tile_map = new GameObject(parent_object_name);
+        GameObject random_tile;
+        Vector2 tile_position;
+        Vector3 tile_rotation;
+        GameObject temp;
+
+        for (float x = up_left.x; x <= down_right.x; x += 0.5f)
         {
-            for (int y = column / 2 * -1; y <= column / 2; y++)
+            for (float y = down_right.y; y <= up_left.y; y += 0.5f)
             {
-                GameObject random_tile = tiles[Random.Range(0, tiles.Length)];
-                Vector2 tile_position = new Vector2(x, y);
+                random_tile = tile_list[Random.Range(0, tile_list.Length)];
+                tile_position = new Vector2(x, y);
+                if (rotate == true)
+                    tile_rotation = new Vector3(0, 0, Random.Range(0, 4) * 90);
+                else
+                    tile_rotation = Vector3.zero;
 
-                Instantiate(tiles[0], tile_position, Quaternion.identity);
+                Instantiate(tile_list[0], tile_position, Quaternion.identity);
 
-                GameObject temp = Instantiate(random_tile, tile_position, Quaternion.identity); //스프라이트를 프래팹으로 만들어서 게임오브젝트로 변경한다
+                temp = Instantiate(random_tile, tile_position, Quaternion.Euler(tile_rotation));
+
+                temp.transform.SetParent(tile_map.transform);
             }
         }
     }

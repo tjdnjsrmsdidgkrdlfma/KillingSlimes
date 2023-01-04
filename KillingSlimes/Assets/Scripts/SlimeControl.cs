@@ -18,14 +18,17 @@ public class SlimeControl : MonoBehaviour
     }
 
     float destroy_time = 1.5f;
+    bool attack = false;
     bool death = false;
 
     Rigidbody2D rb;
+    BoxCollider2D coll;
     Animator anim;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
     }
 
@@ -51,8 +54,26 @@ public class SlimeControl : MonoBehaviour
         {
             death = true;
             anim.SetTrigger("Death");
+            coll.enabled = false;
             Destroy(gameObject, destroy_time);
         }
     }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Wall"))
+        {
+            if(attack == false)
+            {
+                attack = true;
+                anim.SetBool("Attack", true);
+                Invoke("AttackFalse", 1.16f);
+            }
+        }
+    }
+
+    void AttackFalse()
+    {
+        attack = false;
+    }
 }
